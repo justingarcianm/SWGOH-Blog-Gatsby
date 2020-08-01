@@ -4,19 +4,19 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 const Featured = () => {
     const data = useStaticQuery(query)
-    const { content, strapiId, title, updated_at, user, category, image } = data.strapiPost
+    const { content, strapiId, title, updated_at, user, category, image, slug } = data.strapiPost
     return (
         <div id="featured">
             <div className="container">
                 <div className="row shadow rounded-lg bg-light">
                     <div className="col-md-6 px-0">
-                        <Link to="/">
+                        <Link to={`/post/${slug}`}>
                         <img src={image.publicURL} className="img-fluid rounded-left" alt={title}/>
                         </Link>
                     </div>
                     <div className="col-md-6 my-auto px-5">
                         <h5 className="text-muted text-uppercase category">{category.catTitle}</h5>
-                        <Link to="/" className="text-dark text-decoration-none"><h3>{title}</h3></Link>
+                        <Link to={`/post/${slug}`} className="text-dark text-decoration-none"><h3>{title}</h3></Link>
                                 <p className="text-truncate">{content}</p>
                                 <div className="row">
                                     <div className="col-2">
@@ -42,6 +42,7 @@ export const query = graphql`
       content
       strapiId
       title
+      slug
       image {
         publicURL
       }

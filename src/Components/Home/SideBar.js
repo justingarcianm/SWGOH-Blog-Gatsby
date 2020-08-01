@@ -7,7 +7,7 @@ import ResourceLinks from './ResourceLinks'
 const SideBar = () => {
     return (
         <Fragment>
-            <div id="sideBar" className="sticky-top">
+            <div id="sidebar" className="sticky-top pl-4">
                 <h2>Twitter Feed</h2>
                 <Timeline
                     dataSource={{

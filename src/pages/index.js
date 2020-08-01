@@ -10,10 +10,10 @@ const Home = () => (
       <Hero />
   <div className="container">
     <div className="row">
-    <div className="col-md-9" >
+    <div className="col-md-8" >
       <HomeFeed />
     </div>
-    <div className="col-md-3">
+    <div className="col-md-4">
       <SideBar />
     </div>
     </div>

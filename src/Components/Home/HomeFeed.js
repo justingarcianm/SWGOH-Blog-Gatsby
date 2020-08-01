@@ -10,7 +10,7 @@ const HomeFeed = () => {
             <h2 className="display-4">Latest Articles</h2>
             <hr/>
             <div className="HomeFeed">
-                    {data.allStrapiPost.edges.map( post => <Article post={post} key={post.id} /> )}
+                    {data.allStrapiPost.edges.map( post => <Article post={post.node} key={post.id} /> )}
             </div>
         </Fragment>
         
@@ -19,27 +19,27 @@ const HomeFeed = () => {
 
 export const query = graphql`
 {
-    allStrapiPost(limit: 10) {
-      edges {
-        node {
-          content
-          id
-          updated_at(fromNow: true)
-          title
-          strapiId
-          user {
-            username
-          }
-          category {
-            catTitle
-          }
-          image {
-            publicURL
-          }
+  allStrapiPost(sort: {fields: created_at, order: DESC}) {
+    edges {
+      node {
+        content
+        slug
+        updated_at(fromNow: true)
+        title
+        strapiId
+        user {
+          username
+        }
+        category {
+          catTitle
+        }
+        image {
+          publicURL
         }
       }
     }
   }
+}
 `
 
 export default HomeFeed
