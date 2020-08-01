@@ -1,0 +1,25 @@
+#hero {
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#featured {
+    transform: translateY(-40%);
+    margin-bottom: -5%;
+}
+
+ol {
+    li {
+        list-style-type: none;
+        font-size: 1.3rem;
+
+        span {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 5px;
+            cursor: default;
+        }
+    }
+}

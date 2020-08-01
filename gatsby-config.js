@@ -9,13 +9,22 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    `gatsby-transformer-sharp`, 
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
     {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `https://strapi-blog-swgoh.herokuapp.com`,
         queryLimit:1000,
-        contentTypes: [`Category`, `Comment`, `Post`, `Resource Link`, `User` ],
-        singleTypes: [`About`, `Hero`]
+        contentTypes: [`Post`, `Comment`, `Category`,`resource-link`, `User`],
+        singleTypes: [`About`, `banner`]
       }
     },
     {
