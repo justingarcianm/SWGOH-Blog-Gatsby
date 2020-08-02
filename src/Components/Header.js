@@ -2,6 +2,10 @@ import React from 'react'
 import { Link, activeClassName } from 'gatsby'
 import { FaJediOrder,FaSearch } from 'react-icons/fa'
 
+import LoggedIn from './LoggedIn'
+
+
+
 const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
@@ -28,6 +32,7 @@ const Header = () => {
       <li className="nav-item">
         <Link className="nav-link" activeClassName="active" to="/about">About</Link>
       </li>
+      <LoggedIn />
     </ul>
   </div>
 </nav>
