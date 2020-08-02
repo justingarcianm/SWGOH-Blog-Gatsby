@@ -15,7 +15,7 @@ const PostContent = ({ post }) => {
                             <img src={post.user.userImage.publicURL} className="avatar" alt={post.user.username}/>
                             </div>
                             <div className="col-9">
-                            <Link to="/" className="text-light text-decoration-none"><h5 className="mb-0">{post.user.username}</h5></Link>
+                            <Link to={`/author/${post.user.username}`} className="text-light text-decoration-none"><h5 className="mb-0">{post.user.username}</h5></Link>
                             <span>{post.updated_at}</span>
                             </div>
                         </div>

@@ -4,7 +4,6 @@ import { graphql, useStaticQuery, Link } from 'gatsby'
 const RelatedPosts = ({ category }) => {
     const data = useStaticQuery(query)
     const filteredPosts = data.allStrapiPost.nodes.filter( post => post.category.catTitle === category).slice(0,3)
-    console.log(filteredPosts)
     return (
         <div className="py-5">
             <h2>Articles related to: {category}</h2>

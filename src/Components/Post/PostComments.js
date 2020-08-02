@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import CommentForm from './CommentForm'
 
 const PostComment = ({ comments, users }) => {
-    if(comments){
+    if(comments.length){
         return (
             <div>
                 <h2>Comments</h2>

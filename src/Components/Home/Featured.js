@@ -23,7 +23,7 @@ const Featured = () => {
                                     <img src={user.userImage.publicURL} className="avatar" alt={user.username}/>
                                     </div>
                                     <div className="col-10 px-0">
-                                        <Link to="/" className="text-dark text-decoration-none"><h5>{user.username}</h5></Link>
+                                        <Link to={`/author/${user.username}`} className="text-dark text-decoration-none"><h5>{user.username}</h5></Link>
                                             <h6 className="text-muted">{updated_at}</h6>
                                     </div>
                                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, activeClassName } from 'gatsby'
-import { FaJediOrder } from 'react-icons/fa'
+import { FaJediOrder,FaSearch } from 'react-icons/fa'
 
 const Header = () => {
     return (
@@ -9,12 +9,18 @@ const Header = () => {
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
-
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
   <form className="form-inline my-2 my-lg-0">
+    <div className="row">
+      <div className="col-10 col-md-10 pr-0">
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
+      <div className="col-2 col-md-2  pr-0 pl-1">
+      <button className="btn px-1 text-light search" type="submit"><FaSearch></FaSearch></button>
+      </div>
+    </div>
     </form>
+  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+  
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">
         <Link className="nav-link" activeClassName="active" to="/">Home</Link>
