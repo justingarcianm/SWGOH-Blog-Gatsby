@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../layouts/layout'
@@ -7,14 +7,18 @@ import PostComments from '../Components/Post/PostComments'
 import RelatedPosts from '../Components/Post/RelatedPosts'
 
 const PostTemplate = ({ data }) => {
-      if(!data) return null
+    const [ post, setPost ] = useState(undefined)
+    useEffect(() => {
+      setPost(data)
+    },[data])
+      if(!post) return null
     return (
         <Layout>
             <div id="post">
-            <PostContent post={data.strapiPost} />
+            <PostContent post={post.strapiPost} />
             <div className="container">
-                <PostComments comments={data.strapiPost.comments} users={data.allStrapiUser.nodes} postID={data.strapiPost.strapiId} />
-                <RelatedPosts category={data.strapiPost.category.catTitle} />
+                <PostComments comments={post.strapiPost.comments} users={post.allStrapiUser.nodes} postID={post.strapiPost.strapiId} />
+                <RelatedPosts category={post.strapiPost.category.catTitle} />
             </div>
             </div>
         </Layout>
