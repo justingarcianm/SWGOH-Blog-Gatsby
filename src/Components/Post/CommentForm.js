@@ -1,17 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const CommentForm = ({ postID }) => {
     const [ state, setState ] = useState({
         comment:'',
-        error:false
+        error:false,
+        key:undefined,
+        id:undefined
     })
+    useEffect(() => {
+        setState((prevState) => ({
+            ...prevState,
+            key:sessionStorage.getItem("user"),
+            id:sessionStorage.getItem("id")
+        }))
+    }, [])
     const config = {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem("user")}` }
+        headers: { Authorization: `Bearer ${state.key}` }
     };
     const body = {
         "commentBody": state.comment,
-        "user": sessionStorage.getItem("id"),
+        "user": state.id,
         "post": postID
     };
 
@@ -24,7 +33,7 @@ const CommentForm = ({ postID }) => {
     }
     const handleSubmit = event => {
         event.preventDefault();
-        if(sessionStorage.getItem("user")) {
+        if(state.key) {
             axios.post('https://strapi-blog-swgoh.herokuapp.com/comments',
             body,
             config

@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const EditComment = ({ comment }) => {
     const [ state, setState ] = useState({
-        comment:''
+        comment:'',
+        key:undefined
     })
+    useEffect(() => {
+        setState((prevState) => ({
+            ...prevState,
+            key:sessionStorage.getItem("user")
+        }))
+    }, [])
     const config = {
-        headers: { Authorization: `Bearer ${sessionStorage.getItem("user")}` }
+        headers: { Authorization: `Bearer ${state.key}` }
     };
     const handleChange = event => {
         const { name, value } = event.target
