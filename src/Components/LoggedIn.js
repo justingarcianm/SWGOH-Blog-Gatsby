@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Link } from 'gatsby'
 
 const LoggedIn = () => {
-    const user = sessionStorage.getItem("name")
+    const user = sessionStorage.getItem("name") || null
     if (user) {
         return (
             <Fragment>
