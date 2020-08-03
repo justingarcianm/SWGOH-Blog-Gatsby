@@ -7,6 +7,7 @@ import PostComments from '../Components/Post/PostComments'
 import RelatedPosts from '../Components/Post/RelatedPosts'
 
 const PostTemplate = ({ data }) => {
+      if(!data) return null
     return (
         <Layout>
             <div id="post">
