@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 
 const LoggedIn = () => {
     const user = sessionStorage.getItem("name")

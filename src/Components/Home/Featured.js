@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 const Featured = () => {
     const data = useStaticQuery(query)
-    const { content, strapiId, title, updated_at, user, category, image, slug } = data.strapiPost
+    const { content, title, updated_at, user, category, image, slug } = data.strapiPost
     return (
         <div id="featured">
             <div className="container">
