@@ -21,7 +21,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://strapi-blog-swgoh.herokuapp.com`,
+        apiURL: process.env.API_URL,
         queryLimit:1000,
         contentTypes: [`Post`, `Comment`, `Category`,`resource-link`, `User`],
         singleTypes: [`About`, `banner`]
