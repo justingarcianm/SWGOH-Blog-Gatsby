@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 
 import CommentForm from './CommentForm'
@@ -7,8 +7,16 @@ import EditComment from './EditComment'
 
 const PostComment = ({ comments, users, postID }) => {
     const [ state, setState ] = useState({
-        editing:false
+        editing:false,
+        key: undefined
     })
+
+    useEffect(() => {
+        setState((prevState) => ({
+            ...prevState,
+            key:sessionStorage.getItem("name")
+        }))
+     }, [])
 
     const toggleEdit = () => {
         setState((prevState) => ({
@@ -38,10 +46,10 @@ const PostComment = ({ comments, users, postID }) => {
                                 <p>{comment.commentBody}</p>
                             </div>
                             <div className="col-md-4 col-3">
-                                {sessionStorage.getItem("name") === user.username && !state.editing ? <CRUDbuttons comment={true} toggle={toggleEdit}/> : ""}
+                                {state.key === user.username && !state.editing ? <CRUDbuttons comment={true} toggle={toggleEdit}/> : ""}
                             </div>
                             <div className="col-12">
-                                {state.editing && sessionStorage.getItem("name") === user.username ? <EditComment comment={comment} /> : ""}
+                                {state.editing && state.key === user.username ? <EditComment comment={comment} /> : ""}
                         </div>
                         </div>
                     )

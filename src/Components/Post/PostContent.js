@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
 
 import CRUDbuttons from '../CRUDbuttons'
 
 const PostContent = ({ post }) => {
+    const [ key, setKey ] = useState(undefined)
+    useEffect(() => {
+       setKey(sessionStorage.getItem("name")) 
+    }, [])
     return (
         <article>
         <section className={`${post.user.side.toLowerCase()} text-center post-header`}>
@@ -25,7 +29,7 @@ const PostContent = ({ post }) => {
                     <h5 className="text-uppercase category bg-secondary p-2 rounded mx-auto">{post.category.catTitle}</h5>
                     </div>
                     </div>
-                    {sessionStorage.getItem("name") === post.user.username ? <CRUDbuttons post={true} slug={post.slug}/> : ""}
+                    {key === post.user.username ? <CRUDbuttons post={true} slug={post.slug}/> : ""}
                 </div>
         </section>
             <div className="container py-4 text-center">
