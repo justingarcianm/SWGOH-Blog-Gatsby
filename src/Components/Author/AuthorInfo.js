@@ -1,5 +1,7 @@
 import React from 'react'
 
+import CRUDbuttons from '../CRUDbuttons'
+
 const AuthorInfo = ({ user }) => {
     return (
         <div className={`${user.side.toLowerCase()}`}>
@@ -14,6 +16,7 @@ const AuthorInfo = ({ user }) => {
                     <img src={user.userImage.publicURL} alt={user.username} className="rounded-circle img-fluid author-image" />
                 </div>
             </div>
+            {sessionStorage.getItem("name") === user.username ? <CRUDbuttons author={true} /> : ""}
             </div>
         </div>
     )

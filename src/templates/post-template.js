@@ -12,7 +12,7 @@ const PostTemplate = ({ data }) => {
             <div id="post">
             <PostContent post={data.strapiPost} />
             <div className="container">
-                <PostComments comments={data.strapiPost.comments} users={data.allStrapiUser.nodes}/>
+                <PostComments comments={data.strapiPost.comments} users={data.allStrapiUser.nodes} postID={data.strapiPost.strapiId} />
                 <RelatedPosts category={data.strapiPost.category.catTitle} />
             </div>
             </div>
@@ -26,6 +26,7 @@ query ($slug: String!) {
       title
       strapiId
       content
+      slug
       updated_at(fromNow: true)
       user {
         username

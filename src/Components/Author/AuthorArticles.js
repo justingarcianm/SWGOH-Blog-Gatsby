@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react'
 import { Link } from 'gatsby'
 
+import CRUDbuttons from '../CRUDbuttons'
+
 const AuthorArticles = ({ user, categories }) => {
     return (
         <Fragment>
@@ -25,6 +27,7 @@ const AuthorArticles = ({ user, categories }) => {
                                                 <h5 className="text-light text-uppercase category bg-secondary p-2 rounded mx-auto">{category.catTitle}</h5>
                                             </div>
                                         </div>
+                                        {sessionStorage.getItem("name") === user.username ? <CRUDbuttons post={true} slug={post.slug}/> : ""}
                                 </div>
                                 </div>
                                 </Link>

@@ -1,20 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-const CommentForm = ({ postID }) => {
+const EditComment = ({ comment }) => {
     const [ state, setState ] = useState({
-        comment:'',
-        error:false
+        comment:''
     })
     const config = {
         headers: { Authorization: `Bearer ${sessionStorage.getItem("user")}` }
     };
-    const body = {
-        "commentBody": state.comment,
-        "user": sessionStorage.getItem("id"),
-        "post": postID
-    };
-
     const handleChange = event => {
         const { name, value } = event.target
         setState((prevState) => ({
@@ -22,22 +15,18 @@ const CommentForm = ({ postID }) => {
             [name]:value
         }))
     }
-    const handleSubmit = event => {
-        event.preventDefault();
-        if(sessionStorage.getItem("user")) {
-            axios.post('https://strapi-blog-swgoh.herokuapp.com/comments',
-            body,
-            config
-            )
-            .then( () => window.location.reload() )
+    const handleSubmit = async event => {
+        event.preventDefault()
+        await axios.put(`https://strapi-blog-swgoh.herokuapp.com/comments/${comment.id}`,
+        { "commentBody": state.comment || comment.commentBody },config)
+        .then( () => window.location.reload())
             .catch( err => console.log(err))
-        }
-        else {
-            setState((prevState) => ({
-                ...prevState,
-                error:true
-            }))
-        }
+    }
+    const deleteComment = async event => {
+        event.preventDefault()
+        await axios.delete(`https://strapi-blog-swgoh.herokuapp.com/comments/${comment.id}`,config)
+        .then( () =>  window.location.reload())
+        .catch( err => console.log(err))
     }
     return (
         <form className="container-fluid pb-2" onSubmit={handleSubmit}>
@@ -47,19 +36,19 @@ const CommentForm = ({ postID }) => {
                         <input 
                         className="form-control" 
                         type="text" 
-                        placeholder="Enter your comment"
-                        name="comment"
+                        placeholder="Enter your comment" 
+                        defaultValue={comment.commentBody} 
                         onChange={handleChange}
                         />
                     </div>
                 </div>
                 <div className="col-md-2">
-                    <button className="btn btn-dark">Submit</button>
+                    <button className="btn btn-info m-1">CONFIRM</button>
+                    <button className="btn btn-danger m-1" onClick={deleteComment}>DELETE</button>
                 </div>
             </div>
-            {state.error ? <p className="text-danger">Please log in to leave a comment!</p> : ""}
         </form>
     )
 }
 
-export default CommentForm
+export default EditComment

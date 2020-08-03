@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 import ReactMarkdown from 'react-markdown'
 
+import CRUDbuttons from '../CRUDbuttons'
+
 const PostContent = ({ post }) => {
     return (
         <article>
@@ -23,11 +25,10 @@ const PostContent = ({ post }) => {
                     <h5 className="text-uppercase category bg-secondary p-2 rounded mx-auto">{post.category.catTitle}</h5>
                     </div>
                     </div>
-
-                    
+                    {sessionStorage.getItem("name") === post.user.username ? <CRUDbuttons post={true} slug={post.slug}/> : ""}
                 </div>
         </section>
-            <div className="container py-4">
+            <div className="container py-4 text-center">
                 <img src={post.image.publicURL} className="img-fluid" alt={post.title}/>
                 <div className="mt-3 text-justify post-content">
                 <ReactMarkdown source={post.content}/>
