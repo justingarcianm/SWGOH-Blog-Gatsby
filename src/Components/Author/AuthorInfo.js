@@ -8,7 +8,7 @@ const AuthorInfo = ({ user }) => {
        setKey(sessionStorage.getItem("name")) 
     }, [])
     return (
-        <div className={`${user.side.toLowerCase()}`}>
+        <div className={`${user.side}`}>
             <div className="container py-5">
                 <div className="row">
                 <div className="col-md-6 my-auto col-8">

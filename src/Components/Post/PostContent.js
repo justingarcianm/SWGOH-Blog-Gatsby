@@ -11,7 +11,7 @@ const PostContent = ({ post }) => {
     }, [])
     return (
         <article>
-        <section className={`${post.user.side.toLowerCase()} text-center post-header`}>
+        <section className={`${post.user.side} text-center post-header`}>
             <div className="container py-5">
                 <h2 className="display-4">{post.title}</h2>
                 <div className="d-flex py-5 justify-content-around">
