@@ -38,8 +38,8 @@ const CommentForm = ({ postID }) => {
             body,
             config
             )
-            .then( () => window.location.reload() )
-            .catch( err => console.log(err))
+            .then( res => console.log(res) )
+            .catch( err => console.log(err) )
         }
         else {
             setState((prevState) => ({

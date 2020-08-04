@@ -1,13 +1,25 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Article from './Article'
+import CRUDbuttons from '../CRUDbuttons'
 
 const HomeFeed = () => {
+  const [key, setKey] = useState(undefined)
+  useEffect(() => {
+    setKey(sessionStorage.getItem("user"))
+  },[sessionStorage.getItem("user")])
     const data = useStaticQuery(query)
     return (
         <Fragment>
-            <h2 className="display-4">Latest Articles</h2>
+          <div className="d-flex align-items-center">
+          <h2 className="display-4">Latest Articles</h2>
+          <div className="ml-auto">
+          {key ? <CRUDbuttons home={true} /> : ""}
+          </div>
+          
+          </div>
+            
             <hr/>
             <div className="HomeFeed">
                     {data.allStrapiPost.edges.map( post => <Article post={post.node} key={post.id} /> )}

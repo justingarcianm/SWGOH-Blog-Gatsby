@@ -1,5 +1,4 @@
 const path = require('path')
-const { useReducer } = require('react')
 
 // Create pages Dynamically
 exports.createPages = async ({ graphql, actions }) => {
@@ -28,6 +27,15 @@ exports.createPages = async ({ graphql, actions }) => {
             }
         })
     })
+    result.data.allStrapiPost.nodes.forEach( post => {
+        createPage({
+            path:`/edit/${post.slug}`,
+            component: path.resolve('src/templates/editPost-template.js'),
+            context: {
+                slug: post.slug
+            }
+        })
+    })
 
     result.data.allStrapiUser.nodes.forEach( user => {
       createPage({
@@ -40,17 +48,18 @@ exports.createPages = async ({ graphql, actions }) => {
     })
 }
 
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === "build-html") {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /bad-module/,
-            use: loaders.null(),
-          },
-        ],
-      },
-    })
-  }
-}
+// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+//   if (stage === "build-html") {
+//     actions.setWebpackConfig({
+//       module: {
+//         rules: [
+//           {
+//             test: /bad-module/,
+//             use: loaders.null(),
+//           },
+//         ],
+//       },
+//     })
+//   }
+// }
+

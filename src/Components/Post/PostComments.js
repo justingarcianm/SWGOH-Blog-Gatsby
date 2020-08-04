@@ -62,7 +62,7 @@ const PostComment = ({ comments, users, postID }) => {
             <div>
                 <h2>Comments</h2>
                 <hr/>
-                <CommentForm />
+                <CommentForm postID={postID}/>
                     <h3>No Comments</h3>
             </div>
         )

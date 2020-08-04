@@ -21,16 +21,16 @@ const CRUDbuttons = props => {
     if(props.author) {
         return (
                 <div className="d-flex">
-                <Link className="btn btn-success m-1" to='/createPost/'>New Post</Link>
-                <button className="btn btn-warning m-1" to={`/edit/:author`}>Edit Profile</button>
+                <Link className="btn btn-success m-1" to='/create/'>New Post</Link>
+                <button className="btn btn-warning m-1" onClick={handleClick} >Edit Profile</button>
                 </div>
         )
     }
     if(props.home) {
-        return <Link className="btn btn-success" to='/createPost/'>New Post</Link>
+        return <Link className="btn btn-success" to='/create/'>New Post</Link>
     }
     if(props.post) {
-        return <Link className="btn btn-warning" to={`/edit/${props.slug}`} onClick={handleClick} name="editPost">Edit Post</Link>
+        return <Link className="btn btn-warning" to={`/edit/${props.slug}`} name="editPost">Edit Post</Link>
     }
     if(props.comment) {
         return (
