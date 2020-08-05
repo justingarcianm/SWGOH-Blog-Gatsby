@@ -127,7 +127,9 @@ const EditPost = ({ post, categories }) => {
                 ...prevState,
                 submit: false
             }))
-            navigate(`/post/${post.slug}`)
+            navigate(`/post/${post.slug}`, {
+                state:"The post has been updated. Please allow a few seconds for the site to reflect this."
+            })
         })
         .catch( err => console.log(err))
     }
@@ -141,7 +143,9 @@ const EditPost = ({ post, categories }) => {
             config)
             .then( () => {
                 axios.delete(`https://strapi-blog-swgoh.herokuapp.com/upload/files/${state.setImageID}`, config )
-                navigate({path:`/author/${post.user.username}`, state:"The post has been deleted, please give the site a few seconds to reflect this. Thank you!"})
+                navigate(`/author/${post.user.username}`, {
+                    state:"The post has been deleted, please give the site a few seconds to reflect this. Thank you!"
+                })
             })
             .catch( err => console.log(err)) 
         }
