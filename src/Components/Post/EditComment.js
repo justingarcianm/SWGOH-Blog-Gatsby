@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { navigate } from 'gatsby'
 
-const EditComment = ({ comment }) => {
+const EditComment = ({ comment, slug }) => {
     const [ state, setState ] = useState({
         comment:'',
         key:undefined
@@ -26,13 +27,21 @@ const EditComment = ({ comment }) => {
         event.preventDefault()
         await axios.put(`https://strapi-blog-swgoh.herokuapp.com/comments/${comment.id}`,
         { "commentBody": state.comment || comment.commentBody },config)
-        .then( () => window.location.reload())
+        .then( () => navigate(`/post/${slug}`,{
+            state:{
+                updateMsg:"The comment has been updated, please give the site a few seconds to reflect this. Thank you!"
+            }
+        }))
             .catch( err => console.log(err))
     }
     const deleteComment = async event => {
         event.preventDefault()
         await axios.delete(`https://strapi-blog-swgoh.herokuapp.com/comments/${comment.id}`,config)
-        .then( () =>  window.location.reload())
+        .then( () =>  navigate(`/post/${slug}`,{
+            state:{
+                deleteMsg:"The comment has been deleted, please give the site a few seconds to reflect this. Thank you!"
+            }
+        }))
         .catch( err => console.log(err))
     }
     return (

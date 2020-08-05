@@ -5,7 +5,7 @@ import CommentForm from './CommentForm'
 import CRUDbuttons from '../CRUDbuttons'
 import EditComment from './EditComment'
 
-const PostComment = ({ comments, users, postID }) => {
+const PostComment = ({ comments, users, postID, slug }) => {
     const [ state, setState ] = useState({
         editing:false,
         key: undefined
@@ -30,7 +30,7 @@ const PostComment = ({ comments, users, postID }) => {
             <div>
                 <h2>Comments</h2>
                 <hr/>
-                <CommentForm postID={postID} />
+                <CommentForm postID={postID} slug={slug}/>
                 {comments.map( comment => {
                     const user = users.filter( user => user.strapiId === comment.user)[0]
                     return (
@@ -49,7 +49,7 @@ const PostComment = ({ comments, users, postID }) => {
                                 {state.key === user.username && !state.editing ? <CRUDbuttons comment={true} toggle={toggleEdit}/> : ""}
                             </div>
                             <div className="col-12">
-                                {state.editing && state.key === user.username ? <EditComment comment={comment} /> : ""}
+                                {state.editing && state.key === user.username ? <EditComment comment={comment} slug={slug}/> : ""}
                         </div>
                         </div>
                     )
@@ -62,7 +62,7 @@ const PostComment = ({ comments, users, postID }) => {
             <div>
                 <h2>Comments</h2>
                 <hr/>
-                <CommentForm postID={postID}/>
+                <CommentForm postID={postID} slug={slug}/>
                     <h3>No Comments</h3>
             </div>
         )

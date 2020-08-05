@@ -6,18 +6,29 @@ import AuthorArticles from '../Components/Author/AuthorArticles'
 import AuthorInfo from '../Components/Author/AuthorInfo'
 
 const PostTemplate = ({ data }) => {
-  const [ author, setAuthor ] = useState(undefined)
+  const [ state, setState ] = useState({
+    author:undefined,
+    deleteMsg:undefined
+  })
   useEffect(() => {
-      setAuthor(data)
+    setState((prevState) => ({
+      ...prevState,
+      author: data,
+      deleteMsg:window.history.state.deleteMsg
+  }))
+
   },[data])
 
-  if(!author) return null
+  if(!state.author) return null
 
     return (
         <Layout>
+          {state.deleteMsg ? <div className="bg-info p-2 text-center">
+            <h5 className="text-light">{state.deleteMsg}</h5>
+          </div> : ""}
             <div id="author">
-                <AuthorInfo user={author.strapiUser} />
-                <AuthorArticles user={author.strapiUser} categories={author.allStrapiCategory} />
+                <AuthorInfo user={state.author.strapiUser} />
+                <AuthorArticles user={state.author.strapiUser} categories={state.author.allStrapiCategory} />
             </div>
         </Layout>
     )

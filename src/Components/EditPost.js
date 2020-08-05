@@ -230,7 +230,7 @@ const EditPost = ({ post, categories }) => {
                                                 <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                         Deleting...
                                         </button> :
-                                            <button className="btn btn-danger m-3" onClick={deletePost}>DELETE</button>
+                                            <button className="btn btn-danger m-3" onClick={deletePost} disabled={state.uploading} >DELETE</button>
                                             }
                                 </div>
                                 <div className="col-6">
@@ -240,7 +240,7 @@ const EditPost = ({ post, categories }) => {
                                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 Updating...
                                 </button>:
-                                        <button className="btn btn-success m-3">UPDATE</button>
+                                        <button className="btn btn-success m-3" disabled={state.uploading}>UPDATE</button>
                                     }
                                 </div>
                             </div>

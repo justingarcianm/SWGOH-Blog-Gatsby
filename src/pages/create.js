@@ -198,7 +198,7 @@ return(
                                         <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 Creating...
                                 </button>:
-                                        <button className="btn btn-success m-3">Create</button>
+                                        <button className="btn btn-success m-3" disabled={state.uploading}>Create</button>
                                     }
                                 </div>
                             </div>

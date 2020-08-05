@@ -7,18 +7,30 @@ import PostComments from '../Components/Post/PostComments'
 import RelatedPosts from '../Components/Post/RelatedPosts'
 
 const PostTemplate = ({ data }) => {
-    const [ post, setPost ] = useState(undefined)
+    const [ state, setState ] = useState({
+      post:undefined,
+      deleted:undefined,
+      updated:undefined
+    })
     useEffect(() => {
-      setPost(data)
-    },[data])
-      if(!post) return null
+      setState((prevState) => ({
+        ...prevState,
+        post:data,
+      deleted:window.history.state.deleteMsg,
+      updated:window.history.state.updateMsg
+    }))
+    },[data,window.history.state.updateMsg, window.history.state.deleteMsg])
+      if(!state.post) return null
     return (
         <Layout>
             <div id="post">
-            <PostContent post={post.strapiPost} />
+            {state.updated || state.deleted ? <div className="bg-info p-2 text-center">
+            <h5 className="text-light">{state.updated || state.deleted}</h5>
+          </div> : ""}
+            <PostContent post={state.post.strapiPost} />
             <div className="container">
-                <PostComments comments={post.strapiPost.comments} users={post.allStrapiUser.nodes} postID={post.strapiPost.strapiId} />
-                <RelatedPosts category={post.strapiPost.category.catTitle} />
+                <PostComments comments={state.post.strapiPost.comments} users={state.post.allStrapiUser.nodes} postID={state.post.strapiPost.strapiId} slug={state.post.strapiPost.slug}/>
+                <RelatedPosts category={state.post.strapiPost.category.catTitle} />
             </div>
             </div>
         </Layout>
