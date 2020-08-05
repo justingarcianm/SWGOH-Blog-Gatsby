@@ -30,7 +30,7 @@ const Create = ({ data }) => {
             username:sessionStorage.getItem("name"),
             categories:data.allStrapiCategory.nodes
         }))
-        
+        const createMsg = "The post has been created. Please allow a few seconds for the Site to reflect this, thank you! "
     }, [])
 // TODO - Get this to work!!!
         // if(!state.key) {
@@ -119,7 +119,7 @@ const Create = ({ data }) => {
                 }))
                 console.log(res)
                 navigate(`/author/${state.username}`, {
-                    state:"The post has been created. Please allow a few seconds for the Site to reflect this, thank you! "
+                    state: { createMsg }
                 })
             })
             .catch( err => console.log(err))
