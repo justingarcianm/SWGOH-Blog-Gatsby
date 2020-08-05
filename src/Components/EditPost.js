@@ -132,6 +132,21 @@ const EditPost = ({ post, categories }) => {
         .catch( err => console.log(err))
     }
 
+    const deletePost = event => {
+        event.preventDefault()
+        let response = prompt("Enter the word 'delete' to confirm")
+
+        if(response === "delete") {
+            axios.delete(`https://strapi-blog-swgoh.herokuapp.com/posts/${post.strapiId}`,
+            config)
+            .then( () => {
+                axios.delete(`https://strapi-blog-swgoh.herokuapp.com/upload/files/${state.setImageID}`, config )
+                navigate({path:`/author/${post.user.username}`, state:"The post has been deleted, please give the site a few seconds to reflect this. Thank you!"})
+            })
+            .catch( err => console.log(err)) 
+        }
+    }
+
     return (
         <div className="container shadow">
             <h2 className="display-4 pt-5">Currently Editing: "{post.title}"</h2>
@@ -203,7 +218,7 @@ const EditPost = ({ post, categories }) => {
                                                 <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                         Deleting...
                                         </button> :
-                                            <button className="btn btn-danger m-3">DELETE</button>
+                                            <button className="btn btn-danger m-3" onClick={deletePost}>DELETE</button>
                                             }
                                 </div>
                                 <div className="col-6">

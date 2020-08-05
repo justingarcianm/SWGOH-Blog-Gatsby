@@ -118,7 +118,7 @@ const Create = ({ data }) => {
                     submit: false
                 }))
                 console.log(res)
-                navigate(`/post/${state.username}`)
+                navigate({path:`/author/${state.username}`, state:"The post has been created. Please allow a few seconds for the Site to reflect this, thank you! "})
             })
             .catch( err => console.log(err))
         }
