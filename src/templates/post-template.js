@@ -19,7 +19,7 @@ const PostTemplate = ({ data }) => {
       deleted:window.history.state.deleteMsg,
       updated:window.history.state.updateMsg
     }))
-    },[data,window.history.state.updateMsg, window.history.state.deleteMsg])
+    },[data,state.deleted, state.updated])
       if(!state.post) return null
     return (
         <Layout>
