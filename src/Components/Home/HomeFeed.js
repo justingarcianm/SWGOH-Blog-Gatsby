@@ -8,7 +8,7 @@ const HomeFeed = () => {
   const [key, setKey] = useState(undefined)
   useEffect(() => {
     setKey(sessionStorage.getItem("user"))
-  },[sessionStorage.getItem("user")])
+  },[])
     const data = useStaticQuery(query)
     return (
         <Fragment>
