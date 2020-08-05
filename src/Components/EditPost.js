@@ -3,6 +3,7 @@ import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 import { navigate } from 'gatsby'
 
+
 const EditPost = ({ post, categories }) => {
     const [state, setState] = useState({
         title: '',
