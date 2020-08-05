@@ -16,11 +16,10 @@ const Create = ({ data }) => {
         category: '1',
         uploading: false,
         submit: false,
-        delete: false,
         key: undefined,
         userID:undefined,
         categories:[],
-        username:undefined
+        username:undefined,
     })
     useEffect( () => {
          setState((prevState) => ({
@@ -30,7 +29,6 @@ const Create = ({ data }) => {
             username:sessionStorage.getItem("name"),
             categories:data.allStrapiCategory.nodes
         }))
-        const createMsg = "The post has been created. Please allow a few seconds for the Site to reflect this, thank you! "
     }, [])
 // TODO - Get this to work!!!
         // if(!state.key) {
@@ -119,7 +117,9 @@ const Create = ({ data }) => {
                 }))
                 console.log(res)
                 navigate(`/author/${state.username}`, {
-                    state: { createMsg }
+                    state: { 
+                        createMsg:"The post has been created. Please allow a few seconds for the Site to reflect this, thank you! " 
+                    }
                 })
             })
             .catch( err => console.log(err))
@@ -190,16 +190,7 @@ return(
 
                             </div>
                             <div className="form-group row">
-                                <div className="col-6">
-                                    {
-                                        state.delete ?
-                                            <button className="btn btn-danger m-3" type="button" disabled>
-                                                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                        Deleting...
-                                        </button> :
-                                            <button className="btn btn-danger m-3">DELETE</button>
-                                            }
-                                </div>
+                                <div className="col-6"> </div>
                                 <div className="col-6">
                                     {
                                        state.submit ? 

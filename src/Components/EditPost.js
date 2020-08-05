@@ -25,8 +25,6 @@ const EditPost = ({ post, categories }) => {
             userID:sessionStorage.getItem("id")
         }))
         getImageID()
-        const deleteMsg = "The post has been deleted, please give the site a few seconds to reflect this. Thank you!";
-        const updateMsg = "The post has been updated. Please allow a few seconds for the site to reflect this."
     }, [])
     const config = {
         headers: { Authorization: `Bearer ${state.key}` }
@@ -122,7 +120,9 @@ const EditPost = ({ post, categories }) => {
                         submit: false
                     }))
                     navigate(`/post/${post.slug}`, {
-                        state: { updateMsg }
+                        state: { 
+                            updateMsg: "The post has been updated. Please allow a few seconds for the site to reflect this."
+                        }
                     })
                 })
                 .catch( err => console.log(err))  
@@ -132,7 +132,9 @@ const EditPost = ({ post, categories }) => {
                 submit: false
             }))
             navigate(`/post/${post.slug}`, {
-                state: { updateMsg }
+                state: { 
+                    updateMsg: "The post has been updated. Please allow a few seconds for the site to reflect this."
+                }
             })
         })
         .catch( err => console.log(err))
@@ -148,7 +150,9 @@ const EditPost = ({ post, categories }) => {
             .then( () => {
                 axios.delete(`https://strapi-blog-swgoh.herokuapp.com/upload/files/${state.setImageID}`, config )
                 navigate(`/author/${post.user.username}`, {
-                    state:{ deleteMsg }
+                    state:{ 
+                        deleteMsg: "The post has been deleted, please give the site a few seconds to reflect this. Thank you!"
+                     }
                 })
             })
             .catch( err => console.log(err)) 
