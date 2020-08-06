@@ -15,7 +15,7 @@ const Search = () => {
             ...prevState,
             data:result
         }))
-    })
+    },[])
     const handleChange = event => {
         const { name, value } = event.target
         setState((prevState) => ({
