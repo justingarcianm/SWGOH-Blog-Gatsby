@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { Link, graphql, useStaticQuery, navigate } from 'gatsby'
 
 const Search = () => {
     const data = useStaticQuery(query)
@@ -29,9 +29,19 @@ const Search = () => {
         }
     }
 
+const handleSubmit = event => {
+    event.preventDefault()
+    if(state.post){
+        navigate(`/post/${state.post[0].slug}`)
+    }
+    if(state.user && !state.post){
+        navigate(`/author/${state.user[0].username}`)
+    }
+}
+
     return (
         <div>
-             <form>
+             <form onSubmit={handleSubmit}>
       <input 
       className="form-control mr-sm-2" 
       type="search" placeholder="Search" 
@@ -48,7 +58,7 @@ const Search = () => {
               <h6>{p.title}</h6>
               </div>
               <div className="col-4 text-center">
-              <img class="img-fluid" alt={p.title} src={p.image.childImageSharp.fluid.src}  />
+              <img class="img-fluid" alt={p.title} src={"" || p.image.childImageSharp.fluid.src}  />
                   </div>
               </Link>
           
@@ -66,7 +76,7 @@ const Search = () => {
               <h6>{u.username}</h6>
                 </div>
                 <div className="col-4 text-center">
-                    <img class="img-fluid" alt={u.username} src={u.userImage.childImageSharp.fluid.src}  />
+                    <img class="img-fluid" alt={u.username} src={"" || u.userImage.childImageSharp.fluid.src}  />
                 </div>
             </Link>
               )
