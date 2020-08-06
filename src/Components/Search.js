@@ -103,7 +103,7 @@ export const query = graphql`
         username
         userImage {
             childImageSharp {
-            fluid(maxWidth: 100, toFormat: JPG) {
+            fluid(maxWidth: 400, toFormat: JPG) {
                 src
             }
             }
@@ -116,7 +116,7 @@ export const query = graphql`
         title
         image {
             childImageSharp {
-            fluid(maxWidth: 100, toFormat: JPG) {
+            fluid(maxWidth: 400, toFormat: JPG) {
                 src
             }
             }
