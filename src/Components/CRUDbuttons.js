@@ -8,6 +8,7 @@ const CRUDbuttons = props => {
         editComment:false
     })
 
+
     const handleClick = event => {
         const { name } = event.target
         event.preventDefault()

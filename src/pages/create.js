@@ -30,13 +30,11 @@ const Create = ({ data }) => {
             username:sessionStorage.getItem("name"),
             categories:data.allStrapiCategory.nodes
         }))
+       if(!sessionStorage.getItem("user")){
+            navigate('/')
+            alert("Please Log in to Create a Post.")
+        }
     }, [])
-// TODO - Get this to work!!!
-        // if(!state.key) {
-        //     navigate('/');
-        //     alert("Please login to create a new Post");
-        // }
-
     const config = {
             headers: { Authorization: `Bearer ${state.key}` }
         };

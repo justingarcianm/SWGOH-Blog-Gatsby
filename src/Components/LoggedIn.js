@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { Link, navigate } from 'gatsby'
+import { Link } from 'gatsby'
 
 const LoggedIn = () => {
     const [ key, setKey ] = useState(undefined)
@@ -10,6 +10,7 @@ const LoggedIn = () => {
     const logout = () => {
         sessionStorage.clear()
         setKey(undefined)
+        window.location.reload()
     }
 
     if (key) {

@@ -103,7 +103,7 @@ const EditProfile = ({ user }) => {
             "username": state.username || user.username,
             "tagline": state.tagline || user.tagline,
             "side": state.side || user.side,
-            "userImage": state.image || user.userImage.publicURL
+            "userImage": state.imageID || state.setImageID
         };
 
         axios.put(`https://strapi-blog-swgoh.herokuapp.com/users/${state.id}`,
@@ -113,15 +113,9 @@ const EditProfile = ({ user }) => {
             if(state.image) {
                 axios.delete(`https://strapi-blog-swgoh.herokuapp.com/upload/files/${state.setImageID}`, config )
                 .then( () => {
-                    setState((prevState) => ({
-                        ...prevState,
-                        updating: false
-                    }))
-                    navigate(`/author/${user.username}`, {
-                        state: { 
-                            updateMsg: "Your Profile has been updated. Please allow a few seconds for the site to reflect this."
-                        }
-                    })
+                    alert("Your Profile has been updated. Please allow a few seconds for the site to reflect this.")
+                    window.location.reload()
+
                 })
                 .catch( err => {
                     setState((prevState) => ({
@@ -131,15 +125,9 @@ const EditProfile = ({ user }) => {
                     console.log(err)
                 })  
             }
-            setState((prevState) => ({
-                ...prevState,
-                updating: false
-            }))
-            navigate(`/author/${user.username}`, {
-                state: { 
-                    updateMsg: "Your Profile has been updated. Please allow a few seconds for the site to reflect this."
-                }
-            })
+            alert("Your Profile has been updated. Please allow a few seconds for the site to reflect this.")
+            window.location.reload()
+
         })
         .catch( err => {
             setState((prevState) => ({
