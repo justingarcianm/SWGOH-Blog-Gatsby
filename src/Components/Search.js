@@ -22,8 +22,8 @@ const Search = () => {
             ...prevState,
             [name]: value,
             searching:true,
-                user:data.allStrapiUser.nodes.filter( user => user.username.toLowerCase().includes(value.toLowerCase())),
-                post:data.allStrapiPost.nodes.filter( post => post.title.toLowerCase().includes(value.toLowerCase()) )
+                user:state.data.allStrapiUser.nodes.filter( user => user.username.toLowerCase().includes(value.toLowerCase())),
+                post:state.data.allStrapiPost.nodes.filter( post => post.title.toLowerCase().includes(value.toLowerCase()) )
         }))
         if (value.length === 0) {
             setState((prevState) => ({
