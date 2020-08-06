@@ -34,7 +34,11 @@ query ($slug: String!) {
         id
       }
       image {
-        publicURL
+        childImageSharp {
+          fluid(maxWidth: 600) {
+            src
+          }
+        }
         id
       }
       category {

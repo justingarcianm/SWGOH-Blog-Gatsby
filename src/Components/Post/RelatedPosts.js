@@ -15,12 +15,12 @@ const RelatedPosts = ({ category }) => {
                         <div className="col-md-4 my-1" key={related.strapiId}>
                             <article className="related shadow rounded">
                                 <Link to={`/post/${related.slug}`} className="text-dark text-decoration-none">
-                                <img src={related.image.publicURL} alt={related.title} className="img-fluid rounded-top" />
+                                <img src={related.image.childImageSharp.fluid.src} alt={related.title} className="img-fluid rounded-top" />
                                 <div className="p-3 rounded-bottom">
                                     <h4>{related.title}</h4>
                                     <div className="row">
                                         <div className="col-3 text-center px-0">
-                                            <img src={related.user.userImage.publicURL} alt={related.user.username} className="avatar"/>
+                                            <img src={related.user.userImage.childImageSharp.fluid.src} alt={related.user.username} className="avatar"/>
                                         </div>
                                         <div className="col-9 px-0">
                                             <h5 className="mb-0">{related.user.username}</h5>
@@ -49,11 +49,19 @@ export const query = graphql`
         user {
           username
           userImage {
-            publicURL
+            childImageSharp {
+              fluid(maxWidth: 200) {
+                src
+              }
+            }
           }
         }
         image {
-          publicURL
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              src
+            }
+          }
         }
         category {
           catTitle

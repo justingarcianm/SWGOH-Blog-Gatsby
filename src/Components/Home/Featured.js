@@ -11,7 +11,7 @@ const Featured = () => {
                 <div className="row shadow rounded-lg bg-light">
                     <div className="col-md-6 px-0">
                         <Link to={`/post/${slug}`}>
-                        <img src={image.publicURL} className="img-fluid rounded-left" alt={title}/>
+                        <img src={image.childImageSharp.sizes.src} className="img-fluid rounded-left" alt={title}/>
                         </Link>
                     </div>
                     <div className="col-md-6 my-auto px-5">
@@ -20,7 +20,7 @@ const Featured = () => {
                                 <p className="text-truncate">{content}</p>
                                 <div className="row">
                                     <div className="col-2">
-                                    <img src={user.userImage.publicURL} className="avatar" alt={user.username}/>
+                                    <img src={user.userImage.childImageSharp.sizes.src} className="avatar" alt={user.username}/>
                                     </div>
                                     <div className="col-10 px-0">
                                         <Link to={`/author/${user.username}`} className="text-dark text-decoration-none"><h5>{user.username}</h5></Link>
@@ -38,26 +38,34 @@ const Featured = () => {
 
 export const query = graphql`
 {
-    strapiPost(featured: {eq: true}) {
-      content
-      strapiId
-      title
-      slug
-      image {
-        publicURL
-      }
-      updated_at(fromNow: true)
-      user {
-        username
-        userImage {
-          publicURL
+  strapiPost(featured: {eq: true}) {
+    content
+    strapiId
+    title
+    slug
+    image {
+      childImageSharp {
+        sizes(maxWidth: 700) {
+          src
         }
       }
-      category {
-        catTitle
+    }
+    updated_at(fromNow: true)
+    user {
+      username
+      userImage {
+        childImageSharp {
+          sizes(maxWidth: 200) {
+            src
+          }
+        }
       }
     }
+    category {
+      catTitle
+    }
   }
+}
 `
 
 export default Featured

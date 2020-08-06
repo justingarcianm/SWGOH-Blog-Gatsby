@@ -54,7 +54,7 @@ const EditProfile = ({ user }) => {
                 .then(res => {
                     setState((prevState) => ({
                         ...prevState,
-                        image: res.data[0].url,
+                        image: res.data[0].formats.small.url,
                         uploading: false,
                         imageID: res.data[0].id
                     }))

@@ -36,7 +36,7 @@ const PostComment = ({ comments, users, postID, slug }) => {
                     return (
                         <div key={comment.id} className="row py-1">
                             <div className="col-md-1 col-2">
-                                <img src={user.userImage.publicURL} className="avatar" alt={user.username}/>
+                                <img src={user.userImage.childImageSharp.fluid.src} className="avatar" alt={user.username}/>
                             </div>
                             <div className=" col-md-7 col-7">
                                 <div className="d-flex">

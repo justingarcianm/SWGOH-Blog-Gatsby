@@ -67,7 +67,7 @@ const EditPost = ({ post, categories }) => {
                 .then(res => {
                     setState((prevState) => ({
                         ...prevState,
-                        image: res.data[0].url,
+                        image: res.data[0].formats.small.url,
                         uploading: false,
                         imageID: res.data[0].id
                     }))
@@ -215,7 +215,7 @@ const EditPost = ({ post, categories }) => {
                                             <strong>Uploading...</strong>
                                             <div className="spinner-border ml-auto" role="status" aria-hidden="true"></div>
                                         </div> :
-                                        <img className="img-fluid" src={state.image || post.image.publicURL} alt="uploaded" />
+                                        <img className="img-fluid" src={state.image || post.image.childImageSharp.fluid.src} alt="uploaded" />
                                 }
                                 <div className="text-center m-3">
                                     {state.image ? <button className="btn btn-danger" onClick={removeImage}>Choose another</button> : ""}

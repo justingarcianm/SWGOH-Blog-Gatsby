@@ -20,7 +20,7 @@ const AuthorArticles = ({ user, categories }) => {
                             <article className="col-md-4" key={post.strapiId}>
                                 <Link className="text-dark text-decoration-none" to={`/post/${post.slug}`}>
                                     <div className="shadow rounded ">
-                                <img src={post.image.publicURL} alt={post.title} className="img-fluid rounded-top" />
+                                <img src={post.image.childImageSharp.sizes.src} alt={post.title} className="img-fluid rounded-top" />
                                 <div className="p-2">
                                     <h4>{post.title}</h4>
                                         <div className="row p-2">

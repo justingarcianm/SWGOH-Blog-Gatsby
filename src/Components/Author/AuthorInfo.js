@@ -32,7 +32,7 @@ const AuthorInfo = ({ user }) => {
                             <h5>Joined: {user.created_at}</h5>
                 </div>
                 <div className="col-md-6 text-center col-4">
-                    <img src={user.userImage.publicURL} alt={user.username} className="rounded-circle img-fluid author-image" />
+                    <img src={user.userImage.childImageSharp.sizes.src} alt={user.username} className="rounded-circle img-fluid author-image" />
                 </div>
             </div>
             {state.key === user.username && !state.editing ? <CRUDbuttons author={true} toggle={toggleEdit}/> : ""}

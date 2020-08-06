@@ -8,7 +8,7 @@ const Article = props => {
             <div className="row">
                 
                 <div className="col-md-5">
-                <Link to={`/post/${slug}`}><img src={image.publicURL} className="img-fluid" alt={title}/></Link>
+                <Link to={`/post/${slug}`}><img src={image.childImageSharp.sizes.src} className="img-fluid" alt={title}/></Link>
                 </div>
                 <div className="col-md-7 my-auto">
                 <h5 className="text-muted text-uppercase category">{category.catTitle}</h5>

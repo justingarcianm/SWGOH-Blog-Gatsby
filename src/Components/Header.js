@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, activeClassName } from 'gatsby'
+import { Link } from 'gatsby'
 import { FaJediOrder } from 'react-icons/fa'
 
 import LoggedIn from './LoggedIn'

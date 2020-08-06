@@ -41,43 +41,50 @@ const PostTemplate = ({ data }) => {
 
 export const query = graphql`
 query ($slug: String!) {
-    strapiPost(slug: {eq: $slug}) {
-      title
-      strapiId
-      content
-      slug
-      updated_at(fromNow: true)
-      user {
-        username
-        userImage {
-          publicURL
-        }
-        side
-        id
-      }
-      image {
-        publicURL
-      }
-      comments {
-        commentBody
-        updated_at(fromNow: true)
-        user
-        id
-      }
-      category {
-        catTitle
-      }
+  strapiPost(slug: {eq: $slug}) {
+    image {
+      publicURL
     }
-    allStrapiUser {
-      nodes {
-        strapiId
-        userImage {
-          publicURL
+    title
+    updated_at(fromNow: true)
+    strapiId
+    slug
+    user {
+      username
+      userImage {
+        childImageSharp {
+          fluid(maxWidth: 200) {
+            src
+          }
         }
-        username
+      }
+      side
+      id
+    }
+    comments {
+      commentBody
+      updated_at(fromNow: true)
+      user
+      id
+    }
+    category {
+      catTitle
+    }
+  }
+  allStrapiUser {
+    nodes {
+      strapiId
+      username
+      userImage {
+        childImageSharp {
+          fluid(maxWidth: 200) {
+            src
+          }
+        }
       }
     }
   }
+}
 `
 
 export default PostTemplate

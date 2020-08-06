@@ -46,7 +46,12 @@ export const query = graphql`
           catTitle
         }
         image {
-          publicURL
+          childImageSharp {
+            id
+            sizes(maxWidth: 600) {
+              src
+            }
+          }
         }
       }
     }

@@ -18,7 +18,7 @@ const PostContent = ({ post }) => {
 
                         <div className="row text-left">
                             <div className="col-3">
-                            <img src={post.user.userImage.publicURL} className="avatar" alt={post.user.username}/>
+                            <img src={post.user.userImage.childImageSharp.fluid.src} className="avatar" alt={post.user.username}/>
                             </div>
                             <div className="col-9">
                             <Link to={`/author/${post.user.username}`} className="text-light text-decoration-none"><h5 className="mb-0">{post.user.username}</h5></Link>
