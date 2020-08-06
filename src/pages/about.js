@@ -4,12 +4,14 @@ import MarkDown from 'react-markdown'
 import { FaApple, FaGooglePlay} from 'react-icons/fa'
 
 import Layout from '../layouts/layout'
+import SEO from "../Components/seo"
 
 
 const About = () => {
     const data = useStaticQuery(query)
     return (
         <Layout>
+          <SEO pageTitle={`About`} desc={`Learn why I created this page!`} />
         <div className="container">
             <h2 className="text-center display-2 my-5">About the HoloTable</h2>
             <div class="embed-responsive embed-responsive-16by9 mb-4">

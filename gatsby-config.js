@@ -5,7 +5,12 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `Welcome to the HoloBoard`,
+    description: `A blog site for fans of the mobile game Galaxy of Heroes`,
+    author: `@justin`,
+    siteUrl: `https://swgoh-blog-gatsby.netlify.app/`
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
@@ -17,6 +22,18 @@ module.exports = {
         name: `src`,
         path: `${__dirname}/src/`
       }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/jedi-order.png`, // This path is relative to the root of the site.
+      },
     },
     {
       resolve: `gatsby-source-strapi`,

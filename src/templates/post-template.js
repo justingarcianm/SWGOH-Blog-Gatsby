@@ -5,6 +5,7 @@ import Layout from '../layouts/layout'
 import PostContent from '../Components/Post/PostContent'
 import PostComments from '../Components/Post/PostComments'
 import RelatedPosts from '../Components/Post/RelatedPosts'
+import SEO from '../Components/seo'
 
 const PostTemplate = ({ data }) => {
     const [ state, setState ] = useState({
@@ -23,6 +24,7 @@ const PostTemplate = ({ data }) => {
       if(!state.post) return null
     return (
         <Layout>
+          <SEO pageTitle={`${state.post.strapiPost.title}`} desc={`Read through this post!`} />
             <div id="post">
             {state.updated || state.deleted ? <div className="bg-info p-2 text-center">
             <h5 className="text-light">{state.updated || state.deleted}</h5>

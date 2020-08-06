@@ -3,6 +3,7 @@ import axios from 'axios'
 import { navigate } from "gatsby"
 
 import Layout from '../layouts/layout'
+import SEO from '../Components/seo'
 
 const Login = () => {
     const [state, setState] = useState({
@@ -49,6 +50,7 @@ const Login = () => {
 
     return (
         <Layout>
+            <SEO pageTitle={`Login`} desc={`Login into the HoloBoard as a user`} />
             <div id="login">
                 <div className="container">
                     <div className="row">
@@ -77,8 +79,8 @@ const Login = () => {
                                 </div>
                                 <div className="text-center">
                                     {state.error ? <p className="text-danger">Incorrect Username or Password, please try again</p> : ""}
-                                    {state.waiting ? <button class="btn btn-dark" type="button" disabled>
-                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Logging In...</button> :
+                                    {state.waiting ? <button className="btn btn-dark" type="button" disabled>
+                                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Logging In...</button> :
                                         <button className="btn btn-dark">Submit</button>}
                                     <p className="pt-2">Don't have an account? Contact <a href="https://www.codingjustin.com/#contactForm" target="_blank" rel="noopener noreferrer">me</a> for a full demo for this site!</p>
                                 </div>

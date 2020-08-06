@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { navigate, graphql } from 'gatsby'
 
 import Layout from '../layouts/layout'
+import SEO from '../Components/seo'
 import dummyImage from '../images/dummy-image.jpg'
 import { slugify } from '../Components/slugify'
 
@@ -127,6 +128,7 @@ const Create = ({ data }) => {
 
 return(
     <Layout>
+        <SEO pageTitle={`Create Post`} desc={`New post for ${state.username}`} />
         <div className="container shadow">
             <h2 className="display-4 pt-5">Create new Post</h2>
             <form onSubmit={createPost}>

@@ -8,6 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
         allStrapiPost {
           nodes {
             slug
+            title
           }
         }
         allStrapiUser {
@@ -46,20 +47,25 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       })
     })
+// test more!!!!
+    result.data.allStrapiUser.nodes.forEach( user => {
+      createPage({
+        path:`/search/${user.username}`,
+        component: path.resolve('src/templates/search-template.js'),
+        context: {
+          username: user.username
+        }
+      })
+    })
+    result.data.allStrapiPost.nodes.forEach( post => {
+      createPage({
+        path:`/search/${post.title}`,
+        component: path.resolve('src/templates/search-template.js'),
+        context: {
+          username: post.title
+        }
+      })
+    })
 }
 
-// exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-//   if (stage === "build-html") {
-//     actions.setWebpackConfig({
-//       module: {
-//         rules: [
-//           {
-//             test: /bad-module/,
-//             use: loaders.null(),
-//           },
-//         ],
-//       },
-//     })
-//   }
-// }
 

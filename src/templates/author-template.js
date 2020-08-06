@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../layouts/layout'
 import AuthorArticles from '../Components/Author/AuthorArticles'
 import AuthorInfo from '../Components/Author/AuthorInfo'
+import SEO from '../Components/seo'
 
 const PostTemplate = ({ data }) => {
   const [ state, setState ] = useState({
@@ -23,6 +24,7 @@ const PostTemplate = ({ data }) => {
 
     return (
         <Layout>
+          <SEO pageTitle={`${state.author.strapiUser.username}'s Profile`} desc={`See this Authors profile and posts!`} />
           {state.deleteMsg ? <div className="bg-info p-2 text-center">
             <h5 className="text-light">{state.deleteMsg}</h5>
           </div> : ""}

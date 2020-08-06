@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from 'react'
 
 import CRUDbuttons from '../CRUDbuttons'
+import EditProfile from './EditProfile'
 
 const AuthorInfo = ({ user }) => {
-    const [ key, setKey ] = useState(undefined)
+    const [state, setState ] = useState({
+        key:undefined,
+        editing:false
+    })
     useEffect(() => {
-       setKey(sessionStorage.getItem("name")) 
+       setState((prevState) => ({
+           ...prevState,
+           key:sessionStorage.getItem("name")
+       }))
     }, [])
+
+    const toggleEdit = () => {
+        setState((prevState) => ({
+            ...prevState,
+            editing:true
+        }))
+    }
+
     return (
         <div className={`${user.side}`}>
             <div className="container py-5">
@@ -20,7 +35,8 @@ const AuthorInfo = ({ user }) => {
                     <img src={user.userImage.publicURL} alt={user.username} className="rounded-circle img-fluid author-image" />
                 </div>
             </div>
-            {key === user.username ? <CRUDbuttons author={true} /> : ""}
+            {state.key === user.username && !state.editing ? <CRUDbuttons author={true} toggle={toggleEdit}/> : ""}
+            {state.editing ? <EditProfile user={user} /> : ""}
             </div>
         </div>
     )

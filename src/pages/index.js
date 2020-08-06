@@ -4,9 +4,11 @@ import Layout from '../layouts/layout'
 import Hero from '../Components/Home/Hero'
 import HomeFeed from '../Components/Home/HomeFeed'
 import SideBar from '../Components/Home/SideBar'
+import SEO from '../Components/seo'
 
 const Home = () => (
     <Layout>
+      <SEO pageTitle={`Home`} desc={`Welcome to the Homepage`} />
       <Hero />
   <div className="container">
     <div className="row">
