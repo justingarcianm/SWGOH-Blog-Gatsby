@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, graphql, useStaticQuery, navigate } from 'gatsby'
 
 const Search = () => {
-    const data = useStaticQuery(query)
+    const result = useStaticQuery(query)
     const [ state, setState ] = useState({
         searching:false,
         post:undefined,
         user:undefined,
-        parameter:''
+        parameter:'',
+        data:undefined
+    })
+    useEffect(() => {
+        setState((prevState) => ({
+            ...prevState,
+            data:result
+        }))
     })
     const handleChange = event => {
         const { name, value } = event.target
