@@ -16,6 +16,15 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://swgoh-blog-gatsby.netlify.app/',
+        sitemap: 'https://swgoh-blog-gatsby.netlify.app/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
