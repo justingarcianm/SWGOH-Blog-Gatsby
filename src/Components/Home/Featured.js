@@ -19,10 +19,10 @@ const Featured = () => {
                         <Link to={`/post/${slug}`} className="text-dark text-decoration-none"><h3>{title}</h3></Link>
                                 <p className="text-truncate">{content}</p>
                                 <div className="row">
-                                    <div className="col-2">
+                                    <div className="col-md-2 col-3">
                                     <img src={user.userImage.childImageSharp.sizes.src} className="avatar" alt={user.username}/>
                                     </div>
-                                    <div className="col-10 px-0">
+                                    <div className="col-md-10 col-9 px-0">
                                         <Link to={`/author/${user.username}`} className="text-dark text-decoration-none"><h5>{user.username}</h5></Link>
                                             <h6 className="text-muted">{updated_at}</h6>
                                     </div>

@@ -36,7 +36,7 @@ const CRUDbuttons = props => {
     if(props.comment) {
         return (
             <Fragment>
-                <button className="btn btn-warning" onClick={handleClick} name="editComment">EDIT</button>
+                <button className="btn btn-warning mb-1" onClick={handleClick} name="editComment">EDIT</button>
             </Fragment>
         )
     }

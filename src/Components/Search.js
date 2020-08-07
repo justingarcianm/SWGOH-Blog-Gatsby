@@ -60,12 +60,12 @@ const handleSubmit = event => {
           {!state.post.length ? <h6>No Results...</h6> : 
           state.post.map( p => {
               return (
-                <Link className="row text-light my-2 px-0" to={`/post/${p.slug}`} key={p.title} >
+                <Link className="row text-light my-2 px-0 text-decoration-none" to={`/post/${p.slug}`} key={p.title} >
               <div className="col-8 my-auto">
               <h6>{p.title}</h6>
               </div>
               <div className="col-4 text-center">
-              <img class="img-fluid" alt={p.title} src={"" || p.image.childImageSharp.fluid.src}  />
+              <img class="img-fluid rounded" alt={p.title} src={"" || p.image.childImageSharp.fluid.src}  />
                   </div>
               </Link>
           
@@ -78,12 +78,12 @@ const handleSubmit = event => {
           {!state.user.length ? <h6>No Results...</h6> : 
           state.user.map( u => {
               return(
-                <Link className="row text-light my-2 px-0" to={`/author/${u.username}`} key={u.username} >
+                <Link className="row text-light my-2 px-0 text-decoration-none" to={`/author/${u.username}`} key={u.username} >
                 <div className="col-8 my-auto">
               <h6>{u.username}</h6>
                 </div>
                 <div className="col-4 text-center">
-                    <img class="img-fluid" alt={u.username} src={"" || u.userImage.childImageSharp.fluid.src}  />
+                    <img class="img-fluid rounded search-avatar" alt={u.username} src={"" || u.userImage.childImageSharp.fluid.src}  />
                 </div>
             </Link>
               )

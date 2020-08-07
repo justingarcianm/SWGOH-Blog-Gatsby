@@ -9,13 +9,15 @@ import SEO from '../Components/seo'
 const PostTemplate = ({ data }) => {
   const [ state, setState ] = useState({
     author:undefined,
-    deleteMsg:undefined
+    deleteMsg:undefined,
+    createMsg:undefined
   })
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
       author: data,
-      deleteMsg:window.history.state.deleteMsg
+      deleteMsg:window.history.state.deleteMsg,
+      createMsg:window.history.state.createMsg
   }))
 
   },[data])
@@ -25,8 +27,8 @@ const PostTemplate = ({ data }) => {
     return (
         <Layout>
           <SEO pageTitle={`${state.author.strapiUser.username}'s Profile`} desc={`See this Authors profile and posts!`} />
-          {state.deleteMsg ? <div className="bg-info p-2 text-center">
-            <h5 className="text-light">{state.deleteMsg}</h5>
+          {state.deleteMsg || state.createMsg ? <div className="bg-info p-2 text-center">
+            <h5 className="text-light">{state.deleteMsg || state.createMsg }</h5>
           </div> : ""}
             <div id="author">
                 <AuthorInfo user={state.author.strapiUser} />

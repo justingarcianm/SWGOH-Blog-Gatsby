@@ -20,7 +20,7 @@ const PostTemplate = ({ data }) => {
       deleted:window.history.state.deleteMsg,
       updated:window.history.state.updateMsg
     }))
-    },[data,state.deleted, state.updated])
+    },[])
       if(!state.post) return null
     return (
         <Layout>
@@ -48,6 +48,7 @@ query ($slug: String!) {
     title
     updated_at(fromNow: true)
     strapiId
+    content
     slug
     user {
       username

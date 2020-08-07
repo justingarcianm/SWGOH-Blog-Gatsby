@@ -21,7 +21,7 @@ const SideBar = () => {
                 <ResourceLinks />
                 <hr />
                 <Link to="/" className="mr-2 text-dark text-decoration-none">Home</Link>
-                <Link to="/" className="mr-2 text-dark text-decoration-none">About</Link>
+                <Link to="/about" className="mr-2 text-dark text-decoration-none">About</Link>
                 <a href="https://www.codingjustin.com/" target="_blank" rel="noopener noreferrer" className="text-dark text-decoration-none">&copy;Justin Garcia {new Date().getFullYear()}</a>
             </div>
         </Fragment>

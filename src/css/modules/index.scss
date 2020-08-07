@@ -23,3 +23,18 @@ ol {
         }
     }
 }
+
+@media only screen and ( max-width:500px ){
+    #featured {
+        transform: translateY(0);
+        margin-bottom: 5%;
+    }
+    #hero {
+        h1 {
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+    }
+}

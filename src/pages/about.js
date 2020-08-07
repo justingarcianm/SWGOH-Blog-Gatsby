@@ -14,11 +14,12 @@ const About = () => {
           <SEO pageTitle={`About`} desc={`Learn why I created this page!`} />
         <div className="container">
             <h2 className="text-center display-2 my-5">About the HoloTable</h2>
+           
+            <MarkDown source={data.allStrapiAbout.edges[0].node.aboutContent}/>
+            
             <div class="embed-responsive embed-responsive-16by9 mb-4">
             <iframe title="about video" src={`https://www.youtube.com/embed/${data.allStrapiAbout.edges[0].node.youtubeId}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
-            <MarkDown source={data.allStrapiAbout.edges[0].node.aboutContent}/>
-            
             <h2 className="display-3 text-center">
                             Download the app Today!
                         </h2>

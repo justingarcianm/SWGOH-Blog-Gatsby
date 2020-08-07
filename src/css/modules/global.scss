@@ -33,6 +33,10 @@ span {
     border-radius: 50%;
   }
 
+.search-avatar {
+    max-height: 100px;
+}
+
 .Light {
     background-color: #007bff;
     color: #fff;
@@ -69,8 +73,6 @@ span {
 }
 
 @media only screen and (max-width:500px){
-    .display-1,
-    .display-2,
     .display-3,
     .display-4,
     .display-5 {

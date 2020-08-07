@@ -172,12 +172,7 @@ const EditProfile = ({ user }) => {
                             <option value="Dark">Dark</option>
                         </select>
                         </div>
-                        {state.updating ? <button className="btn btn-success m-3" type="button" disabled>
-                                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                 Updating...
-                                </button> :
-                                <button className="btn btn-success" disabled={state.uploading || state.removing}>UPDATE</button>
-                                }
+                        
                     </div>
                     <div className="col-md-6">
                     <div className="form-group"> 
@@ -196,6 +191,12 @@ const EditProfile = ({ user }) => {
                                         </div> : ""}
                     </div>
                 </div>
+                {state.updating ? <button className="btn btn-success m-3" type="button" disabled>
+                                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                 Updating...
+                                </button> :
+                                <button className="btn btn-success" disabled={state.uploading || state.removing}>UPDATE</button>
+                                }
             </form>
         </div>
     )
