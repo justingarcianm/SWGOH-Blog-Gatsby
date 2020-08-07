@@ -16,7 +16,12 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sitemap`,
+    {
+      resolve:`gatsby-plugin-sitemap`,
+      options: {
+        exclude:[`/edit/*`, `/create/`]
+      }
+    },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
